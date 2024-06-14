@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Web to Lead Form</title>
+    <!-- Include the Lightning Out JavaScript file -->
+    <script src="https://maneendranath-dev-ed.lightning.force.com/lightning/lightning.out.js"></script>
+    <script>
+        function loadLeadForm(accessToken) {
+            $Lightning.use("c:LightningOutApp", function() {
+                $Lightning.createComponent(
+                    "c:customLeadForm",  // LWC component
+                    {},                  // Attributes to pass to the component
+                    "leadFormContainer", // DOM element to attach the component
+                    function(cmp) {
+                        console.log("LWC component loaded!");
+                    }
+                );
+            }, "https://your-salesforce-domain.my.salesforce.com", accessToken);
+        }
+
+        function fetchAccessToken() {
+            fetch('https://maneendranath-dev-ed.my.salesforce.com/services/apexrest/getAccessToken', {
+                method: 'POST'
+            })
+            .then(response => response.text())
+            .then(data => {
+			alert(JSON.stringify(data));
+                loadLeadForm(data);
+            })
+            .catch(error => console.error('Error:', error));
+        }
+
+        // Initialize on page load
+        window.onload = fetchAccessToken;
+    </script>
+</head>
+<body>
+    <h1>Web to Lead Form</h1>
+    <div id="leadFormContainer"></div>
+</body>
+</html>
