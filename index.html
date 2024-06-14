@@ -19,7 +19,7 @@
         }
 
         function fetchAccessToken() {
-            fetch('https://maneendranath-dev-ed.my.salesforce.com/services/apexrest/getAccessToken', {
+            fetch('https://maneendranath-dev-ed.my.salesforce.com/services/apexrest/getAccessTokenForWeb', {
                 method: 'POST'
             })
             .then(response => response.text())
