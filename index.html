@@ -3,19 +3,19 @@
 <head>
     <title>Web to Lead Form</title>
     <!-- Include the Lightning Out JavaScript file -->
-    <script src="https://maneendranath-dev-ed.my.salesforce.com/lightning/lightning.out.js"></script>
+    <script src="https://maneendranath-dev-ed.lightning.force.com/lightning/lightning.out.js"></script>
     <script>
         function loadLeadForm(accessToken) {
             $Lightning.use("c:LightningOutApp", function() {
                 $Lightning.createComponent(
-                    "c:customLeadForm",  // LWC component
+                    "c:customLeadForm",   // LWC component name
                     {},                  // Attributes to pass to the component
                     "leadFormContainer", // DOM element to attach the component
                     function(cmp) {
                         console.log("LWC component loaded!");
                     }
                 );
-            }, "https://maneendranath-dev-ed.my.salesforce.com/", accessToken);
+            }, "https://maneendranath-dev-ed.my.salesforce.com", accessToken); // Replace with your Salesforce instance URL
         }
 
         function fetchAccessToken() {
@@ -24,8 +24,8 @@
             })
             .then(response => response.text())
             .then(data => {
-			alert(JSON.stringify(data));
-                loadLeadForm(data);
+                console.log('Access token:', data);
+                loadLeadForm(data.trim()); // Trim any extra whitespace from the token
             })
             .catch(error => console.error('Error:', error));
         }
@@ -39,3 +39,4 @@
     <div id="leadFormContainer"></div>
 </body>
 </html>
+
