@@ -8,14 +8,14 @@
         function loadLeadForm(accessToken) {
             $Lightning.use("c:LightningOutApp", function() {
                 $Lightning.createComponent(
-                    "c:customLeadFormAura",   // LWC component name
+                    "c:customLeadForm",  // LWC component
                     {},                  // Attributes to pass to the component
                     "leadFormContainer", // DOM element to attach the component
                     function(cmp) {
                         console.log("LWC component loaded!");
                     }
                 );
-            }, "https://maneendranath-dev-ed.my.salesforce.com", accessToken); // Replace with your Salesforce instance URL
+            }, "xxxx/", accessToken);
         }
 
         function fetchAccessToken() {
@@ -24,8 +24,8 @@
             })
             .then(response => response.text())
             .then(data => {
-                console.log('Access token:', data);
-                loadLeadForm(data.trim()); // Trim any extra whitespace from the token
+			alert(JSON.stringify(data));
+                loadLeadForm(data);
             })
             .catch(error => console.error('Error:', error));
         }
@@ -39,4 +39,3 @@
     <div id="leadFormContainer"></div>
 </body>
 </html>
-
