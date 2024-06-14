@@ -3,7 +3,7 @@
 <head>
     <title>Web to Lead Form</title>
     <!-- Include the Lightning Out JavaScript file -->
-    <script src="https://maneendranath-dev-ed.lightning.force.com/lightning/lightning.out.js"></script>
+    <script src="login.salesforce.com/lightning/lightning.out.js"></script>
     <script>
         function loadLeadForm(accessToken) {
             $Lightning.use("c:LightningOutApp", function() {
@@ -15,11 +15,11 @@
                         console.log("LWC component loaded!");
                     }
                 );
-            }, "https://https://maneendranath-dev-ed.my.salesforce.com", accessToken);
+            }, "login.salesforce.com", accessToken);
         }
 
         function fetchAccessToken() {
-            fetch('https://maneendranath-dev-ed.my.salesforce.com/services/apexrest/getAccessTokenForWeb', {
+            fetch('login.salesforce.com/services/apexrest/getAccessTokenForWeb', {
                 method: 'POST'
             })
             .then(response => response.text())
