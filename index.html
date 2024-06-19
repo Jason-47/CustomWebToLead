@@ -34,7 +34,7 @@
                     body: JSON.stringify(lead)
                 });
                 const data = await response.json();
-                console.log('Lead created:', data);
+                alert('Lead created:', data);
             } catch (error) {
                 console.error('Error creating lead:', error);
             }
